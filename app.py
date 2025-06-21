@@ -46,27 +46,23 @@ if st.button("Get Options Data"):
                 "ask",
                 "lastPrice",
                 "change",
-                "percentChange",
                 "lastTradeDate",
                 "volume",
                 "openInterest",
-                "impliedVolatility",
             ]
             df = df[cols]
-            df["impliedVolatility"] = df["impliedVolatility"].map("{:.1%}".format)
+           
             df["change"] = df["change"].round(2)
-            df["percentChange"] = (df["percentChange"]/100).map("{:.1%}".format)
+            
             df.columns = [
                 "Strike",
                 "Bid",
                 "Ask",
                 "Last Price",
                 "Change",
-                "% Change",
                 "Time of Last Trade",
                 "Volume",
                 "Open Interest",
-                "Implied Volatility",
             ] 
             df = df.set_index("Strike")
 
