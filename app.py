@@ -51,8 +51,6 @@ if st.button("Get Options Data"):
             ]
             df = df[cols]
            
-            df["change"] = df["change"].round(2)
-            
             df.columns = [
                 "Strike",
                 "Bid",
