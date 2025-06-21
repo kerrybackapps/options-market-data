@@ -3,8 +3,8 @@ import yfinance as yf
 from datetime import datetime
 import pytz
 
-st.title("Options Market Data")
-st.write("Market data for stock options courtesy of Yahoo Finance")
+
+st.title("")
 
 # Sidebar controls
 st.sidebar.header("Configuration")
@@ -45,7 +45,6 @@ if st.button("Get Options Data"):
                 "bid",
                 "ask",
                 "lastPrice",
-                "change",
                 "lastTradeDate",
                 "volume",
                 "openInterest",
@@ -59,7 +58,6 @@ if st.button("Get Options Data"):
                 "Bid",
                 "Ask",
                 "Last Price",
-                "Change",
                 "Time of Last Trade",
                 "Volume",
                 "Open Interest",
