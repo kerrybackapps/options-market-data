@@ -4,14 +4,11 @@ from datetime import datetime
 import pytz
 
 
-st.title("")
-
-# Sidebar controls
-st.sidebar.header("Configuration")
-ticker = st.sidebar.text_input("Ticker Symbol", value="AAPL")
-kind = st.sidebar.selectbox("Option Type", ["call", "put"])
-maturity = st.sidebar.number_input("Maturity Index", min_value=0, max_value=10, value=4, 
-                                  help="Option maturity in order of maturities trading")
+with st.sidebar:
+    ticker = st.text_input("Ticker Symbol", value="AAPL")
+    kind = st.selectbox("Option Type", ["call", "put"])
+    maturity = st.number_input("Maturity Index", min_value=0, max_value=10, value=4, 
+                              help="Option maturity in order of maturities trading")
 
 if st.button("Get Options Data"):
     try:
@@ -63,7 +60,6 @@ if st.button("Get Options Data"):
             df = df.set_index("Strike")
 
             # Display results
-            st.subheader("Market Information")
             col1, col2, col3 = st.columns(3)
             with col1:
                 st.metric("Maturity Date", date)
@@ -72,7 +68,6 @@ if st.button("Get Options Data"):
             with col3:
                 st.metric("Data Updated", now)
 
-            st.subheader(f"{ticker.upper()} {kind.title()} Options")
             st.dataframe(df, height=400)
 
     except IndexError:
@@ -80,5 +75,4 @@ if st.button("Get Options Data"):
     except Exception as e:
         st.error(f"Error fetching data: {str(e)}")
 
-st.markdown("---")
 st.caption("Data is typically delayed by 15 minutes and may be more delayed outside trading hours.")
