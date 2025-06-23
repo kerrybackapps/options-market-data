@@ -4,20 +4,8 @@ from datetime import datetime
 import pytz
 
 
-# Top control area with shaded background
+# Top control area
 with st.container():
-    st.markdown("""
-        <style>
-        .control-area {
-            background-color: #f0f2f6;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        </style>
-        <div class="control-area">
-        """, unsafe_allow_html=True)
-    
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -30,7 +18,6 @@ with st.container():
         maturity = st.number_input("Maturity Index", min_value=0, max_value=10, value=4, 
                                   help="Option maturity in order of maturities trading")
     
-    st.markdown("</div>", unsafe_allow_html=True)
 
 if st.button("Get Options Data"):
     try:
