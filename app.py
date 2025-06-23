@@ -17,9 +17,13 @@ with st.container():
     with col3:
         maturity = st.number_input("Maturity Index", min_value=0, max_value=10, value=4, 
                                   help="Option maturity in order of maturities trading")
-    
 
-if st.button("Get Options Data"):
+# Center the button below the controls
+_, btn_col, _ = st.columns([1, 1, 1])
+with btn_col:
+    get_data = st.button("Get Options Data")
+
+if get_data:
     try:
         with st.spinner(f"Fetching {kind} options data for {ticker.upper()}..."):
             est = pytz.timezone('US/Eastern')
@@ -84,4 +88,4 @@ if st.button("Get Options Data"):
     except Exception as e:
         st.error(f"Error fetching data: {str(e)}")
 
-st.caption("Data is typically delayed by 15 minutes and may be more delayed outside trading hours.")
+st.caption("Data is typically delayed by 15 minutes and will be more delayed outside trading hours.")
