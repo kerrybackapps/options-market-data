@@ -123,7 +123,7 @@ if get_data:
             with col3:
                 st.metric("Data Updated", now)
 
-            st.dataframe(df, height=400)
+            st.dataframe(df, use_container_width=True)
 
     except IndexError:
         st.error(f"Maturity index {maturity} not available. Please try a lower number.")
